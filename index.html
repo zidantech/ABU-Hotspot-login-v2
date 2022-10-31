@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>...::: ABU Hotspot : Login :::..</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/zidan_style.css" type="text/css">
+</head>
+<body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+        
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+    <div id="main">
+        <div class="login">
+            <h1>ABU HOTSPOT</h1>
+            <p>Welcome, Please enter Your details</p>
+            <form class="form" name="login" action="$(link-login-only)" method="post"
+            $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+
+                <p class="label">Username:</p>
+                <input id="ssid" type="text" value="$(username)" name="username" placeholder="Enter your username" name="username" id="username" required>
+                <p class="label">Password:</p>
+                <input id="key" type="password" placeholder="Enter your Password" name="password" id="password" required><br>
+                <button id="submit" class="submit">Login</button><br>
+                
+                <div style="margin:40px 0 0 10px; font-weight:bold;">
+                    Click <a href="http://172.16.50.3/user" title="User Manager" target="_blank">
+                    <font color="#FF0000">Here</font> </a> to change your password
+                    <span style="font-weight: 400">
+                        <font size="1">&nbsp;&nbsp;&nbsp;&nbsp;</font>
+                        <font size="2">© </font>
+                        <font size="1">2019 All Rights Reseverd | </font>
+                        <a href="https://icict.abu.edu.ng/"><font size="1">
+						    Ahmadu Bello University Zaria | Institute of Computing &amp;ICT</font>
+                        </a>
+                    </span>
+                </div>
+            </form>
+            <div> $(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)	</div>
+        </div>
+        
+        <div class="right-panel">
+                <img class="logo" src="img/abu_logo.png">
+                <h2 class="sch_name">AHMADU BELLO UNIVERSITY</h2>
+            <div class="disclaimer">
+                <!-- <strong><u>Disclaimer!!!</u></strong> -->
+                <marquee behavior="scroll" scrollamount="3.0" style="list-style-position:inside;" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                    <b>
+                        <font color="#FF0000">
+                            <strong style="margin-left:10px;"><u>Notice</u></strong><p></p>
+        
+                        </font></b>
+                    <div><b><font color="#5bcad7">Account holders will be held responsible for any legal or illegal activity performed through their accounts. </font></b></div>
+        
+                    <br />
+                    <p><b><font color="#FF0000"><br />
+                    </font>
+                    </b>
+        
+                        <strong style="margin-left:10px;"><u>	Login Credential</u></strong>
+                    </p>
+                    <p></p>
+        
+                    <div style="margin-left:10px;">
+                        Staff Can Subscribe for Internet Login Details at The NECO ICT DEPARTMENT. </div>
+                    <br />
+        
+                    <strong style="margin-left:10px;"><u>Login Problem</u></strong><p></p>
+        
+                    <div style="margin-left:10px;">If you have problems with your Internet login, Come with your ID card to NECO ICT DEPARTMENT	 </div>
+        
+                    <br />
+                    <strong style="margin-left:10px;"><u>Warning</u></strong><p></p>
+        
+                    <div style="margin-left:10px;"> Please endeavor to Used The Internet Wisely and Secure your Login Credentials safely  	 </div>
+        
+                    <br />
+                    <strong style="margin-left:10px;"><u>Futher Assistance</u></strong><p></p>
+        
+                    <div style="margin-left:10px;"> Please call: Mon - Fri   8am-4pm:
+                        <li>08069232760</li>
+                        <li>08126886938</li>
+                       
+                       </div></marquee>
+        </div>
+    </div>
+</body>
+
+</html>
